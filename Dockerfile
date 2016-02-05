@@ -2,10 +2,13 @@ FROM fedora:latest
 MAINTAINER Nikola Đipanov <nikola.djipanov@gmail.com>
 
 # install needed tools
-RUN dnf install -y git wget nodejs npm nodejs-grunt-cli
+RUN dnf install -y git wget npm make tar bzip2
 
-# make sure that we have an updated version of npm
+# make sure that we have an updated version of npm and node
 RUN npm install -g npm
+RUN npm install -g n
+RUN n stable
+RUN npm install -g grunt-cli
 
 # Clone the reveal.js repo
 RUN git clone https://github.com/hakimel/reveal.js.git
